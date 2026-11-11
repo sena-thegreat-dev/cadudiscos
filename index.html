@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f1eb">
+  <meta name="description" content="CADU DISCOS — uma curadoria de vinis de MPB, jazz, blues e samba das antigas.">
+  <title>CADU DISCOS — Música para viver de perto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="app.js"></script>
+</head>
+
+<body>
+  <div class="announcement"><span>O SOM É ANALÓGICO. A EXPERIÊNCIA É OUTRA.</span><span class="announcement-right">Envio
+      para todo o Brasil <span aria-hidden="true">↗</span></span></div>
+  <header class="site-header" id="top">
+    <div class="header-main shell">
+      <button class="icon-btn mobile-menu-button" id="mobileMenuButton" aria-label="Abrir menu"><span
+          data-icon="menu"></span></button>
+      <a href="#inicio" class="brand" id="brandLink" aria-label="CADU DISCOS, início">
+        <span class="brand-top">CADU</span><span class="brand-bottom">DISC<span class="logo-record"
+            aria-label="O"><i></i></span>S</span>
+      </a>
+      <form class="search" id="searchForm" role="search"><span data-icon="search"></span><input id="searchInput"
+          type="search" placeholder="Busque por artista ou álbum"
+          aria-label="Pesquisar por artista ou álbum"><kbd>↵</kbd></form>
+      <div class="header-actions">
+        <button class="icon-btn account-action" id="accountButton" aria-label="Minha conta" title="Minha conta"><span
+            data-icon="user"></span></button>
+        <button class="icon-btn" id="favoritesButton" aria-label="Meus favoritos" title="Favoritos"><span
+            data-icon="heart"></span><span class="action-count" id="favoriteCount" hidden>0</span></button>
+        <button class="cart-header" id="cartButton" aria-label="Abrir carrinho"><span
+            data-icon="shopping-bag"></span><span class="cart-word">Carrinho</span><b id="cartCount">0</b></button>
+      </div>
+    </div>
+    <nav class="main-nav shell" aria-label="Categorias de discos">
+      <a href="#catalogo" data-category="Todos">Todos os discos</a><a href="#catalogo" data-category="MPB">MPB</a><a
+        href="#catalogo" data-category="Jazz">Jazz</a><a href="#catalogo" data-category="Blues">Blues</a><a
+        href="#catalogo" data-category="Samba das Antigas">Samba das antigas</a><a href="#ofertas"
+        class="nav-offer">Garimpos <span>↗</span></a>
+    </nav>
+  </header>
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <div class="mobile-nav-head"><strong>EXPLORE OS SONS</strong><button class="icon-btn" id="closeMobileMenu"
+        aria-label="Fechar menu"><span data-icon="x"></span></button></div>
+    <div id="mobileNavLinks"></div>
+  </div>
+  <div class="overlay" id="overlay" hidden></div>
+
+  <main id="appMain">
+    <div id="homeView">
+      <section class="hero" id="inicio">
+        <div class="hero-inner shell">
+          <div class="hero-content">
+            <div class="eyebrow hero-eyebrow"><span class="signal"></span> MPB, JAZZ, BLUES E SAMBA DE RAIZ</div>
+            <h1>A VIDA TEM<br>MAIS <em>SOM.</em></h1>
+            <p>Uma seleção de discos para ouvir de perto: grandes vozes da MPB, improvisos de jazz, blues profundo e
+              samba das antigas.</p>
+            <div class="hero-actions"><button class="btn btn-orange" id="exploreButton">Explorar discos
+                <span>↗</span></button><span class="hero-side-note">Aperte o play.<br>O resto é história.</span></div>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="hero-ring hero-ring-1"></div>
+            <div class="hero-ring hero-ring-2"></div>
+            <div class="hero-cover">
+              <div class="cover-kicker">CADU DISCOS APRESENTA</div>
+              <div class="cover-type">SOM<br>DE<br>VERDADE.</div>
+              <div class="cover-bottom"><span>MPB · JAZZ · BLUES</span><span>33⅓ RPM</span></div>
+            </div>
+            <div class="hero-vinyl"><span class="vinyl-label"><b>CADU</b><small>33⅓ RPM<br>STEREO</small></span></div>
+            <div class="hero-sticker">FEITO PRA<br><b>SENTIR.</b><span>✳</span></div>
+          </div>
+          <div class="hero-bottom"><span>01 / 04 — CURADORIA ESPECIAL</span><span>SCROLL PARA EXPLORAR ↓</span></div>
+        </div>
+      </section>
+      <section class="ticker" aria-label="Valores da marca">
+        <div>OUÇA O ÁLBUM INTEIRO <span>✳</span> DESCUBRA UM NOVO SOM <span>✳</span> VIVA A MÚSICA <span>✳</span>
+          COLECIONE HISTÓRIAS <span>✳</span> OUÇA O ÁLBUM INTEIRO <span>✳</span> DESCUBRA UM NOVO SOM <span>✳</span>
+        </div>
+      </section>
+      <section class="categories-section shell section-space">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">/ ENCONTRE SUA FREQUÊNCIA</div>
+            <h2>Qual é o seu <em>som?</em></h2>
+          </div>
+          <p>Quatro caminhos para uma coleção<br>cheia de histórias e swing.</p>
+        </div>
+        <div class="category-grid" id="categoryGrid"></div>
+      </section>
+      <section class="products-section section-space bg-light" id="novidades">
+        <div class="shell">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">/ FRESQUINHOS NA PRATELEIRA</div>
+              <h2>Acabaram de <em>chegar.</em></h2>
+            </div><button class="text-link" data-go-catalog="Todos">Ver todos os discos <span>↗</span></button>
+          </div>
+          <div class="product-grid" id="newArrivalsGrid"></div>
+        </div>
+      </section>
+      <section class="editorial-banner shell" id="ofertas">
+        <div class="editorial-copy">
+          <div class="eyebrow">/ O GARIMPO DA SEMANA</div>
+          <h2>BONS DISCOS.<br><em>BOAS HISTÓRIAS.</em></h2>
+          <p>O próximo favorito da sua coleção está aqui. Descubra edições especiais, achados e ofertas selecionadas a
+            dedo.</p><button class="btn btn-dark" id="offersButton">Ver ofertas <span>↗</span></button>
+        </div>
+        <div class="editorial-art" aria-hidden="true">
+          <div class="editorial-vinyl"></div>
+          <div class="editorial-tag">EDIÇÕES QUE<br>MERECEM REPLAY <span>↗</span></div>
+        </div>
+      </section>
+      <section class="products-section section-space" id="desejados">
+        <div class="shell">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">/ TOCANDO SEM PARAR</div>
+              <h2>Os mais <em>desejados.</em></h2>
+            </div><button class="text-link" data-go-catalog="Todos">Explorar catálogo <span>↗</span></button>
+          </div>
+          <div class="product-grid" id="popularGrid"></div>
+        </div>
+      </section>
+      <section class="benefit-strip">
+        <div class="shell benefit-grid">
+          <div class="benefit"><span data-icon="truck"></span>
+            <div><strong>Todo o Brasil</strong>
+              <p>Seu som chega onde você estiver.</p>
+            </div>
+          </div>
+          <div class="benefit"><span data-icon="package-check"></span>
+            <div><strong>Embalagem especial</strong>
+              <p>Vinis protegidos em cada viagem.</p>
+            </div>
+          </div>
+          <div class="benefit"><span data-icon="credit-card"></span>
+            <div><strong>Parcele sua coleção</strong>
+              <p>Mais música, no seu ritmo.</p>
+            </div>
+          </div>
+          <div class="benefit"><span data-icon="shield-check"></span>
+            <div><strong>Compra segura</strong>
+              <p>Uma experiência sem ruídos.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="about-section shell section-space" id="sobre">
+        <div class="about-art">
+          <div class="about-photo"></div>
+          <div class="about-round">MÚSICA<br>DE VERDADE<span>✳</span></div>
+        </div>
+        <div class="about-copy">
+          <div class="eyebrow">/ PRA QUEM SENTE A MÚSICA</div>
+          <h2>Muito mais do<br>que <em>ouvir música.</em></h2>
+          <p>Na Cadu Discos, acreditamos que a música merece ser vivida. Cada vinil carrega histórias, memórias e
+            experiências únicas.</p>
+          <p>Nossa missão é conectar pessoas à música através de uma seleção especial de discos — escolhidos com
+            carinho, atenção e muita vontade de compartilhar bons sons.</p>
+          <div class="about-sign">A gente acredita no lado A. E no lado B. <span>↗</span></div>
+        </div>
+      </section>
+      <section class="testimonials section-space bg-light">
+        <div class="shell">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">/ QUEM OUVE, RECOMENDA</div>
+              <h2>Gente que ama <em>vinil.</em></h2>
+            </div><span class="placeholder-label">DEPOIMENTOS</span>
+          </div>
+          <div class="testimonial-grid">
+            <article><span class="stars">★★★★★</span>
+              <!-- <p>“A experiência de escolher um disco já dá vontade de colocar a agulha pra tocar.”</p>
+              <div><b>Marina R.</b><small>Avaliação demonstrativa</small></div> -->
+            </article>
+            <article><span class="stars">★★★★★</span>
+              <!-- <p>“O tipo de loja em que você entra atrás de um álbum e descobre outros cinco.”</p>
+              <div><b>Rafael M.</b><small>Avaliação demonstrativa</small></div> -->
+            </article>
+            <article><span class="stars">★★★★★</span>
+              <!-- <p>“Um cantinho pra quem gosta de capa bonita, som quente e boa curadoria.”</p>
+              <div><b>Luiza P.</b><small>Avaliação demonstrativa</small></div> -->
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="faq-section shell section-space" id="faq">
+        <div>
+          <div class="eyebrow">/ SEM PULAR FAIXAS</div>
+          <h2>Dúvidas<br><em>frequentes.</em></h2>
+          <p>Ficou alguma dúvida? A gente ajuda a colocar tudo no ritmo certo.</p>
+        </div>
+        <div class="faq-list" id="faqList"></div>
+      </section>
+    </div>
+
+    <section id="catalogView" class="shell view-section" hidden>
+      <div class="breadcrumbs"><button data-home>Início</button><span>/</span><span>Catálogo</span></div>
+      <div class="catalog-heading">
+        <div>
+          <div class="eyebrow">/ O CATÁLOGO COMPLETO</div>
+          <h1>Encontre seu <em>próximo som.</em></h1>
+          <p>Uma seleção para ouvir, descobrir e colecionar.</p>
+        </div><span id="resultCount"></span>
+      </div>
+      <div class="catalog-layout">
+        <aside class="filter-panel" id="filterPanel">
+          <div class="filter-title"><strong>FILTRAR DISCOS</strong><button id="clearFilters" class="underlined">Limpar
+              tudo</button></div><label>GÊNERO<select id="genreFilter"></select></label><label>ARTISTA<select
+              id="artistFilter"></select></label><label>DÉCADA<select id="decadeFilter">
+              <option value="">Todas as décadas</option>
+              <option value="1960">Anos 60</option>
+              <option value="1970">Anos 70</option>
+              <option value="1980">Anos 80</option>
+              <option value="1990">Anos 90</option>
+              <option value="2000">Anos 2000</option>
+              <option value="2010">Anos 2010</option>
+            </select></label><label>CONDIÇÃO<select id="conditionFilter">
+              <option value="">Todas</option>
+              <option value="Novo">Novo</option>
+              <option value="Usado">Usado / seminovo</option>
+            </select></label><label>DISPONIBILIDADE<select id="stockFilter">
+              <option value="">Todos</option>
+              <option value="available">Em estoque</option>
+            </select></label><label>PREÇO MÁXIMO <output id="priceOutput">R$ 400</output><input type="range"
+              id="priceFilter" min="50" max="400" step="10" value="400"></label>
+        </aside>
+        <div class="catalog-results">
+          <div class="results-toolbar"><button class="filter-mobile-button btn btn-outline" id="filterToggle"><span
+                data-icon="sliders-horizontal"></span> Filtros</button><span id="resultsSummary">Discos
+              selecionados</span><label>Ordenar por <select id="sortFilter">
+                <option value="featured">Destaques</option>
+                <option value="newest">Novidades</option>
+                <option value="popular">Popularidade</option>
+                <option value="priceAsc">Menor preço</option>
+                <option value="priceDesc">Maior preço</option>
+              </select></label></div>
+          <div class="product-grid catalog-product-grid" id="catalogGrid"></div>
+          <div class="empty-results" id="emptyResults" hidden>
+            <div class="empty-disc">♪</div>
+            <h3>Nenhum disco por aqui.</h3>
+            <p>Experimente mudar a busca ou os filtros.</p><button class="btn btn-dark" id="emptyClear">Limpar filtros
+              ↗</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="productView" class="shell view-section" hidden>
+      <div class="breadcrumbs"><button data-home>Início</button><span>/</span><button
+          id="productBackCatalog">Catálogo</button><span>/</span><span id="productBreadcrumb"></span></div>
+      <div class="product-detail" id="productDetail"></div>
+      <div class="related-section">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">/ CONTINUE ESCUTANDO</div>
+            <h2>Combine com <em>esse som.</em></h2>
+          </div>
+        </div>
+        <div class="product-grid" id="relatedGrid"></div>
+      </div>
+    </section>
+    <section id="checkoutView" class="shell view-section" hidden>
+      <div class="breadcrumbs"><button data-home>Início</button><span>/</span><span>Finalizar compra</span></div>
+      <div class="checkout-title">
+        <div class="eyebrow">/ ÚLTIMA FAIXA ANTES DO PLAY</div>
+        <h1>Finalizar <em>pedido.</em></h1>
+        <div class="checkout-steps"><span class="active">01. Identificação</span><span>02. Entrega</span><span>03.
+            Pagamento</span></div>
+      </div>
+      <div class="checkout-layout">
+        <div id="checkoutFormArea"></div>
+        <aside class="order-summary" id="orderSummary"></aside>
+      </div>
+    </section>
+    <section id="successView" class="shell success-view" hidden>
+      <div class="success-vinyl">✓</div>
+      <div class="eyebrow">/ CHECKOUT </div>
+      <h1>Pedido <em>simulado!</em></h1>
+      <p>Você concluiu o fluxo de compra do protótipo. Nenhuma cobrança foi realizada e nenhum pedido real foi enviado.
+      </p><button class="btn btn-orange" id="successBack">Continuar explorando <span>↗</span></button>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell">
+      <div class="footer-top">
+        <div class="footer-brand"><a href="#inicio" class="brand brand-footer" aria-label="CADU DISCOS, início"><span
+              class="brand-top">CADU</span><span class="brand-bottom">DISC<span
+                class="logo-record"><i></i></span>S</span></a>
+          <p>Pra quem gosta de música<br>com começo, meio e lado B.</p>
+          <div class="social"><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"
+              aria-label="Instagram">Instagram ↗</a></div>
+        </div>
+        <div class="footer-col"><strong>EXPLORE</strong><a href="#catalogo" data-category="MPB">MPB</a><a
+            href="#catalogo" data-category="Jazz">Jazz</a><a href="#catalogo" data-category="Blues">Blues</a><a
+            href="#catalogo" data-category="Samba das Antigas">Samba das antigas</a><a href="#catalogo"
+            data-category="Todos">Todos os discos</a></div>
+        <div class="footer-col"><strong>INFORMAÇÕES</strong><a href="#sobre">Nossa história</a><a href="#faq">Perguntas
+            frequentes</a><a href="#faq">Trocas e devoluções</a><a href="#faq">Privacidade</a><a href="#faq">Formas de
+            pagamento</a></div>
+        <div class="newsletter"><strong>UMA DOSE DE MÚSICA NO SEU E-MAIL.</strong>
+          <p>Novidades, lançamentos e boas descobertas. Sem spam, só som.</p>
+          <form id="newsletterForm"><input type="email" id="newsletterEmail" placeholder="Seu melhor e-mail" required
+              aria-label="E-mail para novidades"><button type="submit" aria-label="Cadastrar e-mail">↗</button></form>
+        </div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 CADU DISCOS — FEITO PARA SENTIR | FEITO POR <a href="http://www.instagram.com/sena_thegreat">GABRIEL SENA <i class="fa-brands fa-instagram"></i></a></span><span>UM BOM DISCO NUNCA SAI DE
+          MODA. ✳</span><span>PROTÓTIPO </span></div>
+    </div>
+  </footer>
+
+  <aside class="drawer" id="cartDrawer" aria-hidden="true" aria-label="Carrinho de compras">
+    <div class="drawer-head">
+      <div>
+        <div class="eyebrow">/ SEUS DISCOS</div>
+        <h2>Meu carrinho <span id="drawerCartCount">(0)</span></h2>
+      </div><button class="icon-btn" id="closeDrawer" aria-label="Fechar carrinho"><span data-icon="x"></span></button>
+    </div>
+    <div class="drawer-items" id="drawerItems"></div>
+    <div class="drawer-bottom" id="drawerBottom"></div>
+  </aside>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="dialog-overlay" id="infoDialog" hidden>
+    <div class="info-dialog" role="dialog" aria-modal="true" aria-label="Informações"><button
+        class="icon-btn dialog-close" id="closeDialog" aria-label="Fechar"><span data-icon="x"></span></button>
+      <div class="eyebrow">/ CADU DISCOS</div>
+      <h2>Área demonstrativa</h2>
+      <p>Essa funcionalidade é uma prévia da experiência da loja. Contas, pagamentos e envios reais serão integrados em
+        uma etapa futura.</p><button class="btn btn-dark" id="dialogOk">Entendi ↗</button>
+    </div>
+  </div>
+</body>
+
+</html>
